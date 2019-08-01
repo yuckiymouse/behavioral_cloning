@@ -1,11 +1,4 @@
 # **Behavioral Cloning** 
-
-## Writeup Template
-
-### You can use this file as a template for your writeup if you want to submit it as a markdown file, but feel free to use some other method and submit a pdf if you prefer.
-
----
-
 **Behavioral Cloning Project**
 
 The goals / steps of this project are the following:
@@ -54,21 +47,21 @@ The model.py file contains the code for training and saving the convolution neur
 
 #### 1. An appropriate model architecture has been employed
 
-I use CNN architecture which is made especially for self-driving cars by Nvdia.
+I refers CNN architecture which is made especially for self-driving cars by Nvdia. Here is the paper which introduces the CNN model I use. https://images.nvidia.com/content/tegra/automotive/images/2016/solutions/pdf/end-to-end-dl-using-px.pdf
 
 ![alt text][image1]
 
 #### 2. Attempts to reduce overfitting in the model
 
-This model doesn't include 
+This model doesn't include layers to reduce overfitting.
 
 #### 3. Model parameter tuning
 
-The model used an adam optimizer, so the learning rate was not tuned manually (model.py line 25).
+The model uses an adam optimizer, so the learning rate was not tuned manually.
 
 #### 4. Appropriate training data
 
-Training data was chosen to keep the vehicle driving on the road. I used a combination of center lane driving, recovering from the left and right sides of the road ... 
+Training data was chosen to keep the vehicle driving on the road. I used a combination of center lane driving, recovering from the left and right sides of the road. Also  
 
 For details about how I created the training data, see the next section. 
 
@@ -76,17 +69,11 @@ For details about how I created the training data, see the next section.
 
 #### 1. Solution Design Approach
 
-The overall strategy for deriving a model architecture was to ...
+My first step was to use a convolution neural network model similar introduced in this paper (https://images.nvidia.com/content/tegra/automotive/images/2016/solutions/pdf/end-to-end-dl-using-px.pdf) by Nvidia. I thought this model might be appropriate because this model was developped especially for self-driving car and which doesn't need to detect lines etc. Those conditions are the same as in this project. We don't need to detect lines this time.
 
-My first step was to use a convolution neural network model similar to the ... I thought this model might be appropriate because ...
+In order to gauge how well the model was working, I split my image and steering angle data into a training and validation set. With this model, it was very low loss such as 0.00  from the first epoch. Validation loss was also lower but it didn't keep decreasing so I set the number of epochs as 2. This avoids overfitting.
 
-In order to gauge how well the model was working, I split my image and steering angle data into a training and validation set. I found that my first model had a low mean squared error on the training set but a high mean squared error on the validation set. This implied that the model was overfitting. 
-
-To combat the overfitting, I modified the model so that ...
-
-Then I ... 
-
-The final step was to run the simulator to see how well the car was driving around track one. There were a few spots where the vehicle fell off the track... to improve the driving behavior in these cases, I ....
+The final step was to run the simulator to see how well the car was driving around track one. There were a few spots where the vehicle fell off the track and it couldn't come back to the load. So to improve the driving behavior in these cases, I collected the data 
 
 At the end of the process, the vehicle is able to drive autonomously around the track without leaving the road.
 
