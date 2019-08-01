@@ -49,8 +49,6 @@ The model.py file contains the code for training and saving the convolution neur
 
 I refers CNN architecture which is made especially for self-driving cars by Nvdia. Here is the paper which introduces the CNN model I use. https://images.nvidia.com/content/tegra/automotive/images/2016/solutions/pdf/end-to-end-dl-using-px.pdf
 
-![alt text][image1]
-
 #### 2. Attempts to reduce overfitting in the model
 
 This model doesn't include layers to reduce overfitting.
@@ -71,7 +69,7 @@ For details about how I created the training data, see the next section.
 
 My first step was to use a convolution neural network model similar introduced in this paper (https://images.nvidia.com/content/tegra/automotive/images/2016/solutions/pdf/end-to-end-dl-using-px.pdf) by Nvidia. I thought this model might be appropriate because this model was developped especially for self-driving car and which doesn't need to detect lines etc. Those conditions are the same as in this project. We don't need to detect lines this time.
 
-In order to gauge how well the model was working, I split my image and steering angle data into a training and validation set. With this model, it was very low loss such as 0.00  from the first epoch. Validation loss was also lower but it didn't keep decreasing. So I set the number of epochs as 2. This avoids overfitting.
+In order to gauge how well the model was working, I split my image and steering angle data into a training and validation set. With this model, it was very low loss such as 0.00  from the first epoch. Validation loss was also lower but it didn't keep decreasing. So I set the number of epochs as 2. Smaller epochs avoid overfitting.
 
 The final step was to run the simulator to see how well the car was driving around track one. There were a few spots where the vehicle fell off the track and it couldn't come back to the load. So to improve the driving behavior in these cases, I collected the data 
 
@@ -79,9 +77,7 @@ At the end of the process, the vehicle is able to drive autonomously around the 
 
 #### 2. Final Model Architecture
 
-The final model architecture (model.py lines 18-24) consisted of a convolution neural network with the following layers and layer sizes ...
-
-Here is a visualization of the architecture (note: visualizing the architecture is optional according to the project rubric)
+The final model architecture is the same as previous.
 
 ![alt text][image1]
 
