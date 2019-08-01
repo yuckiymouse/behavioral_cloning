@@ -69,7 +69,7 @@ For details about how I created the training data, see the next section.
 
 My first step was to use a convolution neural network model similar introduced in this paper (https://images.nvidia.com/content/tegra/automotive/images/2016/solutions/pdf/end-to-end-dl-using-px.pdf) by Nvidia. I thought this model might be appropriate because this model was developped especially for self-driving car and which doesn't need to detect lines etc. Those conditions are the same as in this project. We don't need to detect lines this time.
 
-In order to gauge how well the model was working, I split my image and steering angle data into a training and validation set. With this model, it was very low loss such as 0.00  from the first epoch. Validation loss was also lower but it didn't keep decreasing. So I set the number of epochs as 2. Smaller epochs avoid overfitting.
+In order to gauge how well the model was working, I split my image and steering angle data into a training and validation set (70 % for training and 30 % for validation).  With this model, it was very low loss such as 0.00  from the first epoch. Validation loss was also lower but it didn't keep decreasing. So I set the number of epochs as 2. Smaller epochs avoid overfitting.
 
 The final step was to run the simulator to see how well the car was driving around track one. There were a few spots where the vehicle fell off the track and it couldn't come back to the load. So to improve the driving behavior in these cases, I collected the data 
 
@@ -87,24 +87,21 @@ To capture good driving behavior, I first recorded two laps on track one using c
 
 ![alt text][image2]
 
-I then recorded the vehicle recovering from the left side and right sides of the road back to center so that the vehicle would learn to .... These images show what a recovery looks like starting from ... :
+I then recorded the vehicle recovering from the left side and right sides of the road back to center so that the vehicle would learn how to get back to the center. These images show what a recovery looks like starting from the edge of left / right side :
 
 ![alt text][image3]
 ![alt text][image4]
 ![alt text][image5]
 
-Then I repeated this process on track two in order to get more data points.
 
-To augment the data sat, I also flipped images and angles thinking that this would ... For example, here is an image that has then been flipped:
+To augment the data sat, I also flipped images and angles thinking that this would decrese the tendency of the counterclockwise because the couse is a couterclockwise loop.  For example, here is an image that has then been flipped:
 
 ![alt text][image6]
 ![alt text][image7]
+Input images are normalized and centered in the lambda layer in a model. 
+Then, I cropped images to contain useful information in pixels. 70 row pixels from the top of the image and 20 row pixels from the bottom of the image are cut off. 
 
-Etc ....
+I finally randomly shuffled the data set and put 30% of the data into a validation set in the part of `model.fit`.
 
-After the collection process, I had X number of data points. I then preprocessed this data by ...
-
-
-I finally randomly shuffled the data set and put Y% of the data into a validation set. 
-
-I used this training data for training the model. The validation set helped determine if the model was over or under fitting. The ideal number of epochs was Z as evidenced by ... I used an adam optimizer so that manually training the learning rate wasn't necessary.
+I used this training data for training the model. The validation set helped determine if the model was over or under fitting. The ideal number of epochs was 2. 
+I used an adam optimizer so that manually training the learning rate wasn't necessary.
